@@ -1,0 +1,19 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: "Consolas", monospace;
+}
+
+.moving-window {
+    background-color: gray;
+    width: 500px;
+    position: absolute;
+    z-index: 9;
+}
+
+.moving-window-header {
+    background-color: cornflowerblue;
+    cursor: grab;
+    z-index: 10;
+}
