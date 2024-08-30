@@ -56,3 +56,11 @@ function dragElement(elmnt) {
     document.onmousemove = null;
   }
 }
+
+//Make a window go to top when clicked
+document.querySelectorAll(".moving-window").forEach(box => {
+    box.addEventListener("mousedown", () => {
+        document.querySelectorAll(".moving-window").forEach(b => b.style.zIndex = '1');
+        box.style.zIndex = '10';
+    });
+});

@@ -1,19 +1,32 @@
+@font-face {
+    font-family: Win95;
+    src: url("media/fonts/W95FA.otf");
+}
+
 body {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    font-family: "Consolas", monospace;
+    font-family: "Win95", monospace;
+    background-color: #008080;
+
 }
 
 .moving-window {
-    background-color: gray;
+    background-color: white;
     width: 500px;
     position: absolute;
     z-index: 9;
+    resize: both;
+    overflow: auto;
+    border: 3px outset #C0C0C0;
 }
 
 .moving-window-header {
-    background-color: cornflowerblue;
+    background-color: #010082;
+    color: white;
+    border-bottom: 3px outset #C0C0C0;
+    font-weight: bold;
     cursor: grab;
     z-index: 10;
 }
