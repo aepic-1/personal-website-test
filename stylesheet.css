@@ -1,3 +1,17 @@
+:root {
+    /* Colours */
+    --desktop-background: #008080;
+    --window-background: #ffffff;
+    --window-text: #000000;
+    --window-liner: #C0C0C0;
+    --window-shadow: #000000;
+    --bar-active: #010082;
+    --bar-inactive: #808080;
+    --bar-text: #ffffff;
+
+    /* Measures */
+}
+
 @font-face {
     font-family: Win95;
     src: url("media/fonts/W95FA.otf");
@@ -8,25 +22,36 @@ body {
     padding: 0;
     overflow: hidden;
     font-family: "Win95", monospace;
-    background-color: #008080;
-
+    background-color: var(--desktop-background);
 }
 
 .moving-window {
-    background-color: white;
-    width: 500px;
+    background-color: var(--window-liner);
     position: absolute;
     z-index: 9;
-    resize: both;
     overflow: auto;
-    border: 3px outset #C0C0C0;
+    border: 3px outset var(--window-liner);
+    box-shadow: 1px 1px var(--window-shadow);
 }
 
 .moving-window-header {
-    background-color: #010082;
-    color: white;
-    border-bottom: 3px outset #C0C0C0;
+    background-color: var(--bar-active);
+    color: var(--bar-text);
+    border-bottom: 3px outset var(--window-liner);
     font-weight: bold;
     cursor: grab;
     z-index: 10;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.moving-window-body {
+    background-color: var(--window-background);
+    overflow: auto;
+    resize: both;
+    height: 100%;
+    font-family: 'Times New Roman', Times, serif;
+    border-top: 1px solid var(--window-shadow);
+    border-left: 1px solid var(--window-shadow);
 }

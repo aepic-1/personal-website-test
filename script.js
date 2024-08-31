@@ -1,18 +1,9 @@
 // Make the DIV element draggable:
-
-/*
-document.getElementsByClassName("moving-window").forEach(element => {
-    dragElement(element);
-});
-*/
-
 let windows = document.getElementsByClassName("moving-window");
 
 for (let i = 0; i < windows.length; i++) {
     dragElement(windows[i]);
 }
-
-//dragElement(document.getElementById("moving-window"));
 
 function dragElement(elmnt) {
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
@@ -57,10 +48,45 @@ function dragElement(elmnt) {
   }
 }
 
-//Make a window go to top when clicked
+//Make a window go to top when clicked and change bar colour
+const r = getComputedStyle(document.querySelector(":root"));
+
 document.querySelectorAll(".moving-window").forEach(box => {
     box.addEventListener("mousedown", () => {
-        document.querySelectorAll(".moving-window").forEach(b => b.style.zIndex = '1');
+        document.querySelectorAll(".moving-window").forEach(b => { 
+          b.style.zIndex = '1';
+          b.firstElementChild.style.backgroundColor = r.getPropertyValue("--bar-inactive");
+        });
         box.style.zIndex = '10';
+        box.firstElementChild.style.backgroundColor = r.getPropertyValue("--bar-active");
     });
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Function to update the width of window bars based on the window's body
+  function updateWindowBarWidth(windowBody) {
+      const window = windowBody.parentElement;
+      const bar = window.firstElementChild;
+
+      bar.style.width = `${windowBody.offsetWidth}px`;
+  }
+
+  // Get all windows
+  const windows = document.querySelectorAll('.moving-window-body');
+
+  // Create a ResizeObserver for each controller
+  const resizeObservers = Array.from(windows).map(window => {
+      const resizeObserver = new ResizeObserver(() => {
+        updateWindowBarWidth(window);
+      });
+
+      // Observe the current controller
+      resizeObserver.observe(window);
+
+      // Initial update
+      updateWindowBarWidth(window);
+
+      return resizeObserver;
+  });
 });
