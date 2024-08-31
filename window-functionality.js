@@ -1,3 +1,5 @@
+
+
 // Make the DIV element draggable:
 let windows = document.getElementsByClassName("moving-window");
 
@@ -89,4 +91,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
       return resizeObserver;
   });
+
+  // Updates the close buttons when clicked on
+  const closeButtons = document.querySelectorAll(".close-button");
+  const r = getComputedStyle(document.querySelector(":root"));
+
+  closeButtons.forEach(button => {
+    button.addEventListener('mousedown', () => {
+      button.style.backgroundColor = r.getPropertyValue("--darker-liner");
+      button.style.borderStyle = r.getPropertyValue("--window-liner");
+      button.style.borderStyle = 'inset';
+    });
+    button.addEventListener('mouseup', () => {
+      button.style.backgroundColor = r.getPropertyValue("--window-liner");
+      button.style.borderStyle = r.getPropertyValue("--lighter-liner");
+      button.style.borderStyle = 'outset';
+      // Delete the window
+      const container = button.parentElement;
+      const header = container.parentElement;
+      const currentWindow = header.parentElement;
+      currentWindow.remove();
+    });
+  });
 });
+

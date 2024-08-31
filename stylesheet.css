@@ -4,6 +4,8 @@
     --window-background: #ffffff;
     --window-text: #000000;
     --window-liner: #C0C0C0;
+    --lighter-liner: #ffffff;
+    --darker-liner: #707070;
     --window-shadow: #000000;
     --bar-active: #010082;
     --bar-inactive: #808080;
@@ -55,6 +57,24 @@ h3 {
     font-weight: bold;
 }
 
+.js-disclaimer {
+    background-color: #000000;
+    color: royalblue;
+    border-right: 5px solid white;
+    border-bottom: 5px solid white;
+    border-bottom-right-radius: 25px;
+    padding: 10px;
+    width: 350px;
+}
+
+.js-disclaimer a:active {
+    color: mediumvioletred;
+}
+
+.js-disclaimer a:visited {
+    color: mediumorchid;
+}
+
 /* CSS related to windows */
 .moving-window {
     background-color: var(--window-liner);
@@ -68,13 +88,70 @@ h3 {
 .moving-window-header {
     background-color: var(--bar-active);
     color: var(--bar-text);
-    border-bottom: 3px outset var(--window-liner);
-    font-weight: bold;
+    border-bottom: 3px outset var(--lighter-liner);
     cursor: grab;
     z-index: 10;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.moving-window-header-title {
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    margin: 4px 0 4px 4px;
+}
+
+.moving-window-header-buttons {
+    display: inline-block;
+    line-height: 0;
+    margin: 4px 4px 4px 0;
+}
+
+.close-button {
+    background-color: var(--window-liner);
+    border: 1px outset var(--lighter-liner);
+    box-shadow: 1px 1px;
+    padding: 0;
+    width: 16px;
+    height: 16px;
+    position: relative;
+    display: inline-block;
+}
+
+.close-button img {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    top: 4px;
+    left: 3px;
+}
+
+.close-button-disabled {
+    background-color: var(--window-liner);
+    border: 1px outset var(--lighter-liner);
+    box-shadow: 1px 1px;
+    padding: 0;
+    width: 16px;
+    height: 16px;
+    position: relative;
+    display: inline-block;
+}
+
+.close-button-disabled img {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    top: 4px;
+    left: 3px;
 }
 
 .moving-window-body {

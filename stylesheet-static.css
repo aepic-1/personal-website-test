@@ -1,0 +1,47 @@
+/* CSS rules for static pages ONLY!!!! (kinda important as they may destroy dynamic elements) */
+.static-window {
+    background-color: var(--window-liner);
+    z-index: 9;
+    overflow: auto;
+    border: 3px outset var(--window-liner);
+    box-shadow: 1px 1px var(--window-shadow);
+    margin: 0 auto;
+    width: 50%;
+}
+
+.static-window-header {
+    background-color: var(--bar-active);
+    color: var(--bar-text);
+    border-bottom: 3px outset var(--lighter-liner);
+    cursor: grab;
+    z-index: 10;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.static-window-header-title {
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    margin: 4px 0 4px 4px;
+}
+
+.static-window-header-buttons {
+    display: inline-block;
+    line-height: 0;
+    margin: 4px 4px 4px 0;
+}
+
+.static-window-body {
+    background-color: var(--window-background);
+    height: 100%;
+    font-family: 'Times New Roman', Times, serif;
+    border-top: 1px solid var(--window-shadow);
+    border-left: 1px solid var(--window-shadow);
+}
