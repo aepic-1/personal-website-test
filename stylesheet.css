@@ -108,6 +108,12 @@ h3 {
     margin: 4px 0 4px 4px;
 }
 
+.moving-window-header-title img {
+    margin-right: 3px;
+    width: 16px;
+    height: 16px;
+}
+
 .moving-window-header-buttons {
     display: inline-block;
     line-height: 0;

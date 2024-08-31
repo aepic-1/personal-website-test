@@ -13,8 +13,6 @@
     background-color: var(--bar-active);
     color: var(--bar-text);
     border-bottom: 3px outset var(--lighter-liner);
-    cursor: grab;
-    z-index: 10;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -30,6 +28,12 @@
     text-overflow: ellipsis;
     display: inline-block;
     margin: 4px 0 4px 4px;
+}
+
+.static-window-header-title img {
+    margin-right: 3px;
+    width: 16px;
+    height: 16px;
 }
 
 .static-window-header-buttons {
