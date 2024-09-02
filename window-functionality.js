@@ -70,8 +70,11 @@ document.addEventListener("DOMContentLoaded", () => {
   function updateWindowBarWidth(windowBody) {
       const window = windowBody.parentElement;
       const bar = window.firstElementChild;
+      const address = window.children[1];
 
       bar.style.width = `${windowBody.offsetWidth}px`;
+      window.style.width = `${windowBody.offsetWidth}px`;
+      address.style.width = `${windowBody.offsetWidth - 3}px`;
   }
 
   // Get all windows

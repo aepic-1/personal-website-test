@@ -80,7 +80,7 @@ h3 {
     background-color: var(--window-liner);
     position: absolute;
     z-index: 9;
-    overflow: auto;
+    overflow: visible;
     border: 3px outset var(--window-liner);
     box-shadow: 1px 1px var(--window-shadow);
 }
@@ -109,6 +109,7 @@ h3 {
 }
 
 .moving-window-header-title img {
+    float: left;
     margin-right: 3px;
     width: 16px;
     height: 16px;
@@ -160,6 +161,36 @@ h3 {
     left: 3px;
 }
 
+.moving-window-address {
+    height: 16px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 2px;
+    background-color: var(--window-background);
+    border-top: 1px solid var(--window-shadow);
+    border-left: 1px solid var(--window-shadow);
+    border-bottom: 3px outset var(--lighter-liner);
+    cursor: text;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.address-text {
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.address-icon {
+    float: left;
+    margin-left: 2px;
+    margin-right: 4px;
+    width: 16px;
+    height: 16px;
+}
+
 .moving-window-body {
     background-color: var(--window-background);
     overflow: auto;
@@ -168,4 +199,8 @@ h3 {
     font-family: 'Times New Roman', Times, serif;
     border-top: 1px solid var(--window-shadow);
     border-left: 1px solid var(--window-shadow);
+    width: 500px;
+    height: 400px;
+    min-width: 100px;
+    min-height: 50px;
 }
