@@ -1,10 +1,98 @@
+// Create an array to keep track of each window
+let windowArray = [];
+const initalWindows = document.getElementsByClassName("moving-window");
+for (let i = 0; i < initalWindows.length; i++) {
+  windowArray[i] = initalWindows[i];
+}
 
+// Removes the first instance of an element from an array
+function removeElement(array, element) {
+  const index = array.indexOf(element);
+  if (index > -1) {
+    array.splice(index, 1);
+  }
+  return array;
+}
+
+// A function create a fully customisable window 
+function createNewWindow(width, height, top, left, title, iconSrc, isCloseEnabled, addressText, contentBody) {
+  const body = document.getElementsByTagName("body")[0];
+
+  // Create moving window
+  const newWindow = document.createElement("div");
+  newWindow.className = "moving-window";
+  newWindow.style.top = top;
+  newWindow.style.left = left;
+  body.appendChild(newWindow);
+
+  // Create header
+  const newBar = document.createElement("div");
+  newBar.className = "moving-window-header";
+  newWindow.appendChild(newBar);
+
+  // Create header title
+  const newTitle = document.createElement("div");
+  newTitle.className = "moving-window-header-title";
+  newBar.appendChild(newTitle);
+
+  // Create header icon & text
+  const newIcon = document.createElement("img");
+  newIcon.src = iconSrc;
+  newTitle.appendChild(newIcon);
+  const newTitleText = document.createTextNode(title);
+  newTitle.appendChild(newTitleText);
+
+  // Create header buttons
+  const newButtons = document.createElement("div");
+  newButtons.className = "moving-window-header-buttons";
+  newBar.appendChild(newButtons);
+
+  // Create close button
+  const newClose = document.createElement("button");
+  const newCloseIcon = document.createElement("img");
+  if (isCloseEnabled) {
+    newClose.className = "close-button";
+    newCloseIcon.src = "media/ui/close-black.svg";
+  } else {
+    newClose.className = "close-button-disabled";
+    newCloseIcon.src = "media/ui/close-grey.svg";
+  }
+  newButtons.appendChild(newClose);
+  newClose.appendChild(newCloseIcon);
+
+  // Create address bar
+  const newAddress = document.createElement("div");
+  newAddress.className = "moving-window-address";
+  newWindow.appendChild(newAddress);
+
+  // Create address text + icon
+  const newAddressText = document.createElement("span");
+  const newAddressIcon = document.createElement("img");
+  const addressNode = document.createTextNode(addressText);
+  newAddressIcon.src = "media/win95-icons/Folders/Opened Folder.ico";
+  newAddressText.className = "address-text";
+  newAddress.appendChild(newAddressText);
+  newAddressText.appendChild(newAddressIcon);
+  newAddressText.appendChild(addressNode);
+
+  // Create window body
+  const newWindowBody = document.createElement("div");
+  newWindowBody.className = "moving-window-body";
+  newWindowBody.style.width = `${width}px`;
+  newWindowBody.style.height = `${height}px`;
+  newWindow.appendChild(newWindowBody);
+
+  // Populate window content
+  newWindowBody.innerHTML = contentBody;
+
+  // Add window to the array
+  windowArray.push(newWindow);
+  
+}
 
 // Make the DIV element draggable:
-let windows = document.getElementsByClassName("moving-window");
-
-for (let i = 0; i < windows.length; i++) {
-    dragElement(windows[i]);
+for (let i = 0; i < windowArray.length; i++) {
+    dragElement(windowArray[i]);
 }
 
 function dragElement(elmnt) {
@@ -53,7 +141,7 @@ function dragElement(elmnt) {
 //Make a window go to top when clicked and change bar colour
 const r = getComputedStyle(document.querySelector(":root"));
 
-document.querySelectorAll(".moving-window").forEach(box => {
+windowArray.forEach(box => {
     box.addEventListener("mousedown", () => {
         document.querySelectorAll(".moving-window").forEach(b => { 
           b.style.zIndex = '1';
@@ -81,7 +169,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const windows = document.querySelectorAll('.moving-window-body');
 
   // Create a ResizeObserver for each controller
-  const resizeObservers = Array.from(windows).map(window => {
+  const resizeObservers = Array.from(windowArray).map(window => {
       const resizeObserver = new ResizeObserver(() => {
         updateWindowBarWidth(window);
       });
@@ -113,6 +201,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const container = button.parentElement;
       const header = container.parentElement;
       const currentWindow = header.parentElement;
+      windowArray = removeElement(windowArray, currentWindow);
       currentWindow.remove();
     });
   });

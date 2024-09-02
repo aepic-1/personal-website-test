@@ -184,7 +184,7 @@ h3 {
     text-overflow: ellipsis;
 }
 
-.address-icon {
+.address-text img {
     float: left;
     margin-left: 2px;
     margin-right: 4px;
